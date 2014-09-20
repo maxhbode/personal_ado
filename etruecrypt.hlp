@@ -1,0 +1,71 @@
+{smcl}
+{* *! version 0.1.0 Max Bode 12dec2012}{...}
+{cmd:help etruecrypt}
+{hline}
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd:etruecrypt} {hline 2} Extension of -truecrypt- which mounts or dismounts TrueCrypt volumes. }{p_end}
+{p2colreset}{...}
+
+{title:Syntax}
+
+{phang}
+Mount a TrueCrypt volume
+
+{p 8 10 2}
+{cmd:etruecrypt}{cmd:,} {opt m:ount} {opt dr:ive(drive_letter)} [{it:options}]
+
+{phang}
+Dismount a TrueCrypt volume
+
+{p 8 10 2}
+{cmd:etruecrypt}{cmd:,} {opt dis:mount} {opt dr:ive(drive_letter)} [{it:options}]
+ 
+{p2colreset}{...}		
+ 
+{synoptset 23 tabbed}{...}
+{synopthdr}
+{synoptline}
+{synopt :{opt m:ount}}mount the TrueCrypt volume {it:filename}{p_end}
+{synopt :{opt dis:mount}}dismount the TrueCrypt volume specified by {opt drive}{p_end}
+{synopt :{opt dr:ive(drive_letter)}}mount the volume as {it:drive_letter} or dismount the volume specified by {it:drive_letter}{p_end}
+{synopt :{opt prog:dir(directory_name)}}the directory that contains TrueCrypt.exe; default is {res:C:\Program Files\TrueCrypt}{p_end}
+{synopt :{opt off()}}stops execution of the command if set to 0 and runs command if set to 1. Default is 1. {p_end}
+{synopt :{opt replace}}dismounts volume before mounting volume (if mount is specified). {p_end}
+{synoptline}
+{p2colreset}{...}	
+		
+{pstd}
+
+{title:Description}
+
+{pstd}
+{cmd:etruecrypt} {hline 2} The extension produces a local "TC_`drive_letter')" which is the directory path of the TrueCrypt volume in question.
+
+{title:Example for Windows}
+
+{phang}. ssc install truecrypt {p_end}
+{phang}. local truecryptcontrol 1 /* or -local truecryptcontrol 0-  */ {p_end}
+{phang}. etruecrypt, mount drive(q) filename(C:/Users/yourusername/Desktop/testvolume.tc) progdir(C:/Program Files/TrueCrypt) off(`truecryptcontrol') {p_end}
+{phang}. set obs 20 {p_end}
+{phang}. g testvar = _n {p_end}
+{phang}. sa "`TC_q'/testfile.dta", replace {p_end}
+{phang}. etruecrypt, dismount  drive(q) progdir(C:/Program Files/TrueCrypt) off(`truecryptcontrol') {p_end}
+
+{title:Example for MacOX}
+
+{phang}. ssc install truecrypt {p_end}
+{phang}. local truecryptcontrol 1 /* or -local truecryptcontrol 0-  */ {p_end}
+{phang}. etruecrypt, mount drive(q) filename(/Users/yourusername/Desktop/testvolume.tc)  progdir(/Applications) off(`truecryptcontrol') {p_end}
+{phang}. set obs 20 {p_end}
+{phang}. g testvar = _n {p_end}
+{phang}. sa "`TC_q'/testfile.dta", replace {p_end}
+{phang}. etruecrypt, dismount  drive(q)  progdir(/Applications) off(`truecryptcontrol') {p_end}
+
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}12/24/2012{p_end}

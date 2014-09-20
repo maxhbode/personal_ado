@@ -1,0 +1,68 @@
+{smcl}
+{* *! version 1.0.0 Max Bode 18oct2012}{...}
+{cmd:help reg}
+{hline}
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd:texreg} {hline 2} Outsheets regression tables into LaTeX as a whole document or fractional document.}{p_end}
+{p2colreset}{...}
+
+{hline}
+	
+{marker s_Description}		
+{title:Description}
+
+{pstd}
+{cmd:texreg} outsheets regression tables into LaTeX as a whole document or fractional document.
+
+{hline}
+
+{marker s_Syntax}
+{title:Syntax}
+
+{phang}
+
+{p 8 10 2}
+{cmd:texreg,} 
+			{opt file:name(filename)} 
+			{opt dep:endent(varlist)} {opt ind:ependent(varlist)} 
+			[{it:options}]
+			
+{marker s_Options}
+{title:Options}
+
+{dlgtab:Main}
+			
+{phang}{opt replace} creates a new file or overwrite the existing file. {p_end}
+
+{phang}{opt frac:tion} supresses LaTeX document creation and thus only creates TeX fragment for inclusion in a document is created. {p_end}
+
+{phang}{opt pre:fix(prefix_name)} 
+
+{dlgtab:Document}
+
+These options are required if the option {opt frac:tion} is not specified.
+
+{phang}{opt side:ways} create sideways tables and turns respective pages in document into landscape. {p_end}
+
+{phang}{opt author} {p_end}
+
+{phang}{opt title} {p_end}
+
+{phang}{opt c:overpage(author, title, date)} Creates title for LaTeX document {p_end}
+
+{p 8}    {cmd:author} - Insert author name. {p_end}
+{p 8}    {cmd:title} - Insert title.  {p_end}
+{p 8}    {cmd:date} - Insert date. If left bank LaTeX puts in today's date. {p_end}
+
+{phang}{opt list:oftables} {p_end}
+
+{hline}
+
+{marker s_Author}
+{title:Author}
+
+{phang}Max Bode, Evidence for Policy Design {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}

@@ -1,0 +1,51 @@
+{smcl}
+{* *! version 1.0.1, Max Bode, 18oct2012}{...}
+{cmd:help runcopy}
+{hline}
+
+{title:WARNING:} This is an alpha version of the tool. You are strongly advised to 
+review the underlying code before using the program. Currently, there are no error 
+messages coded into the program. 
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd:runcopy} {hline 2} combines the two commands run/do and copy and adds additional options for backing up dofiles. } {p_end}
+{p2colreset}{...}
+
+
+{title:Description}
+
+{pstd}
+{cmd:runcopy} causes Stata to silently execute the commands stored in filename just as if they were entered from the keyboard and also creates dofile backups in time-stamped folders. If filename is specified without an extension, .do is assumed.
+
+
+{title:Syntax}
+
+{phang}
+Run dofile and create dofile backup
+
+{p 8 10 2}
+{cmd:runcopy,} {opt file:name(filename)} {opt loc:ation(dofile_location)} {opt back:up(backup_location)} [{it:options}]
+
+{synoptset 23 tabbed}{...}
+{synopthdr}
+{synoptline}
+{synopt :{opt do}} echoes the commands as it executes them, whereas the default (run) is silent. {p_end}
+{synopt :{opt arg:uments()}} adds arguments to run/do. Put each token in simple quotation marks. {p_end}
+{synopt :{opt time:stamp}} creates folder with date-hour stamp as title and appends hour-minute timestamp as prefix to backup filename. {p_end}
+{synopt :{opt s:uffix}} only togehter with timestamp, create backup folder with timestamp as title. {p_end}
+{synopt :{opt norun}} suppresses running of dofile. {p_end}
+{synopt :{opt nocopy}} suppresses copying of dofile. {p_end}
+{synopt :{opt nostop}} allows the do-file to continue executing even if an error occurs.  Normally, Stata stops executing the do-file when
+        it detects an error (nonzero return code). {p_end}
+{synopt :{opt replace}} overwrite existing dofile. {p_end}
+{synoptline}
+{p2colreset}{...}		
+		
+
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}12/19/2012{p_end}

@@ -1,0 +1,71 @@
+{smcl}
+{* *! version 0.1.0 Max Bode 24jan2013}{...}
+{cmd:help skiptag}
+{hline}
+
+{title:Title}
+
+{pstd}
+{cmd:skiptag} does two things: (1) It creates variabe indicating when variable 
+should be skipped but isn't ({it:type I error}) and  when variable should not be 
+skipped but is ({it:type II error}); (2) Unless the option {opt not:fixvalues} is specified: (i) 
+observations that were supposed to be skipped but weren't will be set to 
+{it:"not applicable"}, and (ii) observations that were not supposed to be skipped 
+but are missing are  replaced  with {it:"missing value"}. {p_end}
+
+{title:Syntax}
+
+{pstd}
+{cmd: skiptag} varlist, {opt ind:icator(varname)} {opt skip:value(skipvalues)} [{it:options}] {p_end}
+
+{synoptset 23 tabbed}{...}
+{synopthdr}
+{synoptline}
+{synopt :{opt ind:icator()}} is not optional. Specify indicator variable which triggers skip. {p_end}
+{synopt :{opt skip:value(s1,É,sn)}} is not optional. Specify indicator variable 
+									values that lead to skip. Multiple values can be specified 
+									by separating values through commas. {p_end}
+{synopt :{opt not:fixvalues}} suppresses fixing values. {p_end}
+{synopt :{opt suf:fix(n1,n2,n3,n4)}} creates suffix for error-indicator 
+									variable based on indicator's variable name.
+									The suffix is created by taking the beginning and end of the 
+									indicator's variable name using the function:
+									{it:suffix = substr("`indicator'",`n1',`n2') + substr("`indicator'",`n3',`s4')} {p_end}
+{synopt :{opt pre:fix()}} sets prefix of error-indicator variable. Default is "ee". {p_end}
+{synopt :{opt r:eport}} creates report of each error-indicator variable created. {p_end}
+{synoptline}
+{p2colreset}{...}	
+		
+{pstd}
+
+{title:Description}
+
+{pstd}
+{cmd:skiptag} creates variabe indicating (1) when variable should be 
+skipped but isn't (type I error) and (2) when variable should
+not be skipped but is (type II error). The  error-indicating can
+take three value: 0 for "no error", 1 for {it:"type I error (value not skipped)"}, and 
+2 for {it:"type II error (missing value)}". 
+
+{pstd}
+{cmd:skiptag} also changes values (unless the option {opt not:fixvalues} is specified): (1) observations that were supposed to be skipped
+but weren't will be replaced with .b and  {it:"not applicable (skip)"} for numeric and string values respecitvley,
+and (2) observations that were not supposed to be skipped but are missing are  replaced 
+with .e and {it:"enumerator/deo error, missing value"} for numeric and string values respecitvley.
+
+{pstd}
+Note, {cmd: skiptag} can be used with multiple variables in varlist, but only with one indicator variable.
+
+{pstd}
+Note, in order to validate your skips and get an overview over the error rates
+use {cmd: skiptag} together with {cmd: listerrors}.
+
+{title:Example}
+
+{phang} É
+
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}12/24/2012{p_end}

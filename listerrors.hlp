@@ -1,0 +1,32 @@
+{smcl}
+{* *! version 1.0.0 Max Bode 24jan2013}
+{cmd:help listerrors}
+{hline}
+
+{title:Title}
+
+{p2colset 5 23 25 2}
+{p2col: {cmd:listerrors} {hline 2} creates table for {cmd:skiptag}.  }{p_end}
+{p2colreset}
+
+{title:Syntax}
+
+{phang}
+{cmd:listerrors} varlist, {opt file:name(filename)} 
+		
+
+{synoptset 23 tabbed}
+{synopthdr}
+{synoptline}
+{synopt :{opt out:sheet()}} exports table as .csv file. Specify path and file name in braket. {p_end}
+{synopt :{opt sa:ve()}} save table as .dta file. Specify path and file name in braket. {p_end}
+{synopt :{opt sup:presstable}} supresses table display. {p_end}
+{synoptline}
+{p2colreset}	
+		
+
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}12/19/2012{p_end}

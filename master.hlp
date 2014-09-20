@@ -1,0 +1,34 @@
+{smcl}
+{* *! version 1.0.2, Max Bode, 17mar2013}{...}
+{cmd:help master}
+{hline}
+
+{phang} {title:WARNING:} This is an alpha version of the tool. You are strongly advised to 
+review the underlying code before using the program. Currently, there are no error 
+messages coded into the program.  {p_end}
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd: master} {hline 2} creates a "master" dofile that runs through all the dofiles in a specific folder.}{p_end}
+{p2colreset}{...}
+
+{title:Syntax}
+
+{p 8 10 2}
+{cmd: master} dirname
+{p2colreset}{...}		
+
+{title:Description}
+
+{phang} 
+Note, that {cmd: master} makes use of two other user-written commands, {cmd:master_describe_tool} and {cmd:runcopy}. 
+Make sure these commands are installed before running the program. 
+Dirname refers to the dofile subfolder in your dofile folder. The dofile folder has to be defined has a global called {cmd: DO}. {p_end}
+
+		
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}3/17/2013{p_end}

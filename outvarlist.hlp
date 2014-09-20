@@ -1,0 +1,81 @@
+{smcl}
+{* *! version 1.0.2 (alpha with no error msgs) Max Bode 18oct2012}{...}
+{cmd:help outvarlist}
+{hline}
+
+{title:WARNING:} This is an alpha version of the tool. You are strongly advised to 
+review the underlying code before using the program. Currently, there are no error 
+messages coded into the program. 
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd:outvarlist} {hline 2} creates variable codebook.}{p_end}
+{p2colreset}{...}
+
+{title:Syntax}
+
+{phang}
+Run dofile and create dofile backup
+
+{p 8 10 2}
+{cmd:outvarlist} varlist, [{it:options}]
+{p2colreset}{...}		
+		
+{synoptset 23 tabbed}{...}
+{synopthdr}
+{synoptline}
+{synopt :{opt re:port()}} overrides default of including variable {it: name, varlabel, vallabel, vallabeldef, notes and type} in table. {p_end}
+{synopt :{opt su:mmarize()}} adds r-sclars from summarize command to table. {p_end}
+{synopt :{opt in:spect()}} adds r-sclars from inspect command to table. {p_end}
+{synopt :{opt file:name()}} exports .csv file of variable table. Specify filepath/filename in brackets.  {p_end}
+{synopt :{opt csv}} outsheet .csv file. {p_end}
+{synopt :{opt tex}} outsheet .tex file. {p_end}
+{synopt :{opt time:stamp}} appends timestamp as suffix to codebook file. {p_end}
+{synopt :{opt dont:list}} suppresses display of table in results window. {p_end}
+{synopt :{opt remove()}} exludes variables from varlist. {p_end}
+{synopt :{opt type}} limits variables in varlist to type specified according to {cmd: findname}'s type categories. {p_end}
+{synopt :{opt longtable}} produce longtable .tex table rather normal .tex table (default). {p_end}
+{synoptline}
+{p2colreset}{...}		
+		
+{title:Description}
+
+{pstd}
+{cmd:outvarlist} creates table for display in the results window with variable name, label name, label, type, notes, and summary statistics from the commands {cmd: summarize} and {cmd: inspect}. The table can also be exported as a .csv file with a timestamp suffix. Note that under the current configuration only the first note gets displayed.
+
+{title:Examples}
+
+Display codebook of whole dataset
+{phang}. sysuse auto {p_end}
+{phang}. notes turn: this is a note {p_end}
+{phang}. outvarlist * {p_end}
+
+Display codebook and stats of whole dataset
+{phang}. sysuse auto {p_end}
+{phang}. outvarlist *, su(N mean) in(N_0)  report(name varlabel type) {p_end}
+
+Display selected variables
+{phang}. sysuse auto {p_end}
+{phang}. outvarlist make price rep78, su(N mean) in(N_0) report(name) {p_end}
+
+Outsheet
+{phang}. sysuse auto {p_end}
+{phang}. findname *, loc(varlist) {p_end}
+{phang}. outvarlist `varlist', file(C:/Users/username/Desktop/codebook) time dontlist {p_end}
+
+{title:Saved results}
+
+{p 4 4 2}
+{cmd:outvarlist} saves the following in {cmd:r()}:
+
+{p 4 4 2}Macros
+    {p_end}
+{p 6 20 2}{cmd:r(varlist)}{space 4}the varlist of found variables
+    {p_end}
+
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}12/19/2012{p_end}

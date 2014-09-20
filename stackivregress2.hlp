@@ -1,0 +1,55 @@
+{smcl}
+{* *! version 1.0.0 Max Bode 15mar2013}{...}
+{cmd:help ivreg2stack}
+{hline}
+
+{title:WARNING:} This is an alpha version of the tool. You are strongly advised to 
+review the underlying code before using the program. Currently, there are no error 
+messages coded into the program. 
+
+{title:Title}
+
+{p2colset 5 23 25 2}{...}
+{p2col: {cmd:ivreg2stack}  {hline 2} stacks regression results from ivreg2 vertically.} {p_end}
+{p2colreset}{...}
+
+
+{title:Description}
+
+{p2colset 5 23 25 2}{...}
+{p2col: This command stacks 1st and 2nd stage regression results vertically.} {p_end}
+{p2col: It can also stack one 1st stage and multiple 2nd stages onto of each other.}  {p_end}
+{p2col: It is designed to be used together with ivreg2 and outreg2 as shown in the example.} {p_end}
+{p2colreset}{...}
+
+{title:Syntax}
+
+{p 8 10 2}
+{cmd:ivreg2stack,} {opt dep1(varname)} {opt dep2(varname)}
+
+{synoptset 23 tabbed}{...}
+{synopthdr}
+{synoptline}
+{synopt :{opt dep1(varname)}} varname of first-stage dependent variable (the instrumented variable, x-hat). {p_end}
+{synopt :{opt dep2(varname)}} varname or list of varnames of second-stage outcomes. {p_end}
+{synoptline}
+{p2colreset}{...}		
+
+{title:Example with two dependent variables}
+
+{phang}. local dep2ndlist Y1 Y2  {p_end}
+{phang}. local dep1st X  {p_end}
+{phang}.  {p_end}
+{phang}. foreach `dep2nd' in `dep2ndlist' {  {p_end}
+{phang}. 	ivreg2 `dep2nd' (`dep1st' = instrument), robust savefirst first {p_end}
+{phang}. 	estimates store _ivreg2_`dep2nd' {p_end}
+{phang}. }  {p_end}
+{phang}. ivreg2stack, dep1(`dep1st') dep2(`dep2ndlist') {p_end}
+{phang}. cd "$REG_CS_2SLS"  {p_end}
+{phang}. outreg2 using "reg_2sls_table_`dep1stshort'" {p_end}
+		
+{title:Author}
+
+{phang}Max Bode, Harvard University {p_end}
+{phang}max_bode@hks.harvard.edu{p_end}
+{phang}3/15/2013{p_end}
